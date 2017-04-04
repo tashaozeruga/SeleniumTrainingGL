@@ -15,6 +15,8 @@ import java.util.concurrent.TimeUnit;
 
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 
+import static org.junit.Assert.assertTrue;
+
 
 public class AdminPage {
     private static final String BASE_URL= "http://172.22.89.65";
@@ -55,14 +57,7 @@ public class AdminPage {
 
     }
 
-    private boolean validateHeader(String header) {
 
-        WebElement h = driver.findElement(By.cssSelector("h1[style=margin-top: 0px;]"));
-        String title = h.getText();
-        return header.equals(title);
-
-        //return false;
-    }
 
 
     @Test
@@ -89,7 +84,7 @@ public class AdminPage {
 
             parentMenuItem.click();
             wait.withTimeout(5000, TimeUnit.MILLISECONDS);
-          //  Assert.assertTrue("Header incorrect", validateHeader(header));
+            assertTrue("Title absent", checkeElemetPresence(By.cssSelector("h1")) );
 
             if (checkeElemetPresence(childContainerSelector)) {
 
