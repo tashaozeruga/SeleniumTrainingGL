@@ -1,0 +1,24 @@
+apply plugin: 'idea'
+//and standard one
+apply plugin: 'java'
+
+
+ext.junitVersion = '4.11'
+ext.seleniumVersion = '3.3.1'
+
+
+dependencies {
+    compile group: 'junit', name: 'junit', version: junitVersion
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version:seleniumVersion
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version:seleniumVersion
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-api', version:seleniumVersion
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version:seleniumVersion
+    compile group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '1.6.2'
+}
+
+
+// Resolve Maven dependencies as Maven does
+repositories {
+    mavenCentral()
+}
+

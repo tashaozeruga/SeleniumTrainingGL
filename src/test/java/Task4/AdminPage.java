@@ -1,8 +1,6 @@
 package Task4;
 
-import io.github.bonigarcia.wdm.ChromeDriverManager;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -15,11 +13,12 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by Travel-user on 4/3/2017.
- */
-public class AdminPage {
+import io.github.bonigarcia.wdm.ChromeDriverManager;
 
+
+public class AdminPage {
+    private static final String BASE_URL= "http://172.22.89.65";
+    private static final String PAGE_URL= "/litecart/admin/login.php";
     private WebDriver driver;
     private WebDriverWait wait;
 
@@ -58,7 +57,7 @@ public class AdminPage {
 
     private boolean validateHeader(String header) {
 
-        WebElement h = (WebElement) driver.findElements(By.cssSelector("h1[style=margin-top: 0px;]"));
+        WebElement h = driver.findElement(By.cssSelector("h1[style=margin-top: 0px;]"));
         String title = h.getText();
         return header.equals(title);
 
@@ -69,7 +68,7 @@ public class AdminPage {
     @Test
     public void testSelenium() throws IOException {
         System.out.println("HELLO");
-        driver.get("http://localhost/litecart/admin/login.php");
+        driver.get(BASE_URL+PAGE_URL);
         driver.findElement(By.name("username")).sendKeys("admin");
         driver.findElement(By.name("password")).sendKeys("admin");
         driver.findElement(By.name("login")).click();
